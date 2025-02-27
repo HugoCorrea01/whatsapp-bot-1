@@ -18,6 +18,8 @@
   "homepage": "https://github.com/HugoCorrea01/whatsapp-bot#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
+    "openai": "^4.85.4",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.26.0"
   }
