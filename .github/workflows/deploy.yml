@@ -1,0 +1,32 @@
+name: Deploy WhatsApp Bot
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🔑 Criar arquivo .env
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}" >> .env
+          echo "NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }}" >> .env
+
+      - name: 🚀 Iniciar bot
+        run: node index.js
