@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .status {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>WhatsApp Bot</h1>
+    <p class="status">Status: <span id="botStatus">Parado</span></p>
+    <button id="startBtn">Iniciar Bot</button>
+    <button id="stopBtn">Parar Bot</button>
+
+    <script>
+        document.getElementById('startBtn').addEventListener('click', () => {
+            window.electronAPI.startBot();
+            document.getElementById("botStatus").innerText = "Rodando...";
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            window.electronAPI.stopBot();
+            document.getElementById("botStatus").innerText = "Parado";
+        });
+    </script>
+</body>
+</html>
